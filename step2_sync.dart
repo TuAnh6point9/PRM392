@@ -1,61 +1,22 @@
-import 'dart:async';
 import 'dart:io';
 
-const Duration simulatedIoDelay = Duration(seconds: 4);
-final Stopwatch programStopwatch = Stopwatch()..start();
+void downloadFileSync() {
+  print('Bat dau tac vu dong bo (mo phong tai tep trong 4 giay)...');
 
-void logLine(String message) {
-  print('[${programStopwatch.elapsedMilliseconds}] $message');
+  // sleep chan main isolate; day la mo phong, khong tai tep that.
+  sleep(const Duration(seconds: 4));
+
+  print('Tac vu dong bo da hoan thanh.');
 }
 
-/// Mô phỏng lời gọi đồng bộ chặn main isolate.
-void downloadFileSync({Duration delay = simulatedIoDelay}) {
-  logLine(
-    'Bắt đầu tác vụ đồng bộ; mô phỏng chờ tệp trong ${delay.inMilliseconds} ms.',
-  );
-  sleep(delay);
-  logLine('Tác vụ đồng bộ đã hoàn thành.');
-}
-
-class HeartbeatMonitor {
-  Timer? _timer;
-  int? _previousTickMs;
-  int _ticks = 0;
-  int _maxGapMs = 0;
-
-  void start() {
-    logLine('Heartbeat bật, chu kỳ 100 ms.');
-    _timer = Timer.periodic(const Duration(milliseconds: 100), (_) {
-      final nowMs = programStopwatch.elapsedMilliseconds;
-      final gapMs = _previousTickMs == null ? 0 : nowMs - _previousTickMs!;
-      _previousTickMs = nowMs;
-      _ticks++;
-      if (gapMs > _maxGapMs) _maxGapMs = gapMs;
-      logLine('Heartbeat #$_ticks, gapMs=$gapMs');
-    });
-  }
-
-  void stop() {
-    _timer?.cancel();
-    logLine('Dừng heartbeat; ticks=$_ticks, maxGapMs=$_maxGapMs');
-  }
-}
-
-Future<void> main() async {
-  logLine('Bắt đầu Step 2 - Synchronous.');
-  final heartbeat = HeartbeatMonitor()..start();
-
-  // Tạo hai tick trước để gap kế tiếp phản ánh rõ thời gian main isolate bị chặn.
-  await Future<void>.delayed(const Duration(milliseconds: 250));
-
+void main() {
   final stopwatch = Stopwatch()..start();
-  downloadFileSync();
-  stopwatch.stop();
-  logLine(
-    'Lệnh ngay sau downloadFileSync(); elapsedMs=${stopwatch.elapsedMilliseconds}.',
-  );
 
-  await Future<void>.delayed(const Duration(milliseconds: 250));
-  heartbeat.stop();
-  logLine('Kết thúc Step 2.');
+  downloadFileSync();
+
+  // Lenh nay chi duoc chay sau khi downloadFileSync() ket thuc.
+  print(
+    'Lenh ngay sau downloadFileSync(): ${stopwatch.elapsedMilliseconds} ms',
+  );
+  stopwatch.stop();
 }
