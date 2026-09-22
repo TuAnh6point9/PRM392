@@ -1,0 +1,135 @@
+Dart SDK version: 3.13.2 (stable), dart run isolate_experiment.dart
+Run date: 2026-09-22
+
+[0] Bắt đầu Step 4; heavyIterations=1500000000.
+[2] === Trường hợp 1 - main isolate ===
+[2] Trường hợp 1 - main isolate: bật heartbeat mỗi 100 ms.
+[106] Trường hợp 1 - main isolate: heartbeat #1, gapMs=0
+[212] Trường hợp 1 - main isolate: heartbeat #2, gapMs=106
+[260] Trường hợp 1 - main isolate: bắt đầu tính trực tiếp.
+[3308] Trường hợp 1 - main isolate: hoàn tất; checksum=1197327744, computeMs=3047
+[3309] Trường hợp 1 - main isolate: heartbeat #3, gapMs=3097
+[3415] Trường hợp 1 - main isolate: heartbeat #4, gapMs=106
+[3509] Trường hợp 1 - main isolate: heartbeat #5, gapMs=94
+[3570] Trường hợp 1 - main isolate: dừng heartbeat; ticks=5, maxGapMs=3097
+[3572] === Trường hợp 2 - Isolate.run ===
+[3572] Trường hợp 2 - Isolate.run: bật heartbeat mỗi 100 ms.
+[3679] Trường hợp 2 - Isolate.run: heartbeat #1, gapMs=0
+[3787] Trường hợp 2 - Isolate.run: heartbeat #2, gapMs=108
+[3835] Trường hợp 2 - Isolate.run: bắt đầu tính trong isolate phụ.
+[3882] Trường hợp 2 - Isolate.run: heartbeat #3, gapMs=95
+[3975] Trường hợp 2 - Isolate.run: heartbeat #4, gapMs=93
+[4085] Trường hợp 2 - Isolate.run: heartbeat #5, gapMs=110
+[4180] Trường hợp 2 - Isolate.run: heartbeat #6, gapMs=95
+[4274] Trường hợp 2 - Isolate.run: heartbeat #7, gapMs=94
+[4384] Trường hợp 2 - Isolate.run: heartbeat #8, gapMs=110
+[4476] Trường hợp 2 - Isolate.run: heartbeat #9, gapMs=92
+[4588] Trường hợp 2 - Isolate.run: heartbeat #10, gapMs=112
+[4678] Trường hợp 2 - Isolate.run: heartbeat #11, gapMs=90
+[4787] Trường hợp 2 - Isolate.run: heartbeat #12, gapMs=109
+[4882] Trường hợp 2 - Isolate.run: heartbeat #13, gapMs=95
+[4975] Trường hợp 2 - Isolate.run: heartbeat #14, gapMs=93
+[5083] Trường hợp 2 - Isolate.run: heartbeat #15, gapMs=108
+[5178] Trường hợp 2 - Isolate.run: heartbeat #16, gapMs=95
+[5286] Trường hợp 2 - Isolate.run: heartbeat #17, gapMs=108
+[5380] Trường hợp 2 - Isolate.run: heartbeat #18, gapMs=94
+[5474] Trường hợp 2 - Isolate.run: heartbeat #19, gapMs=94
+[5584] Trường hợp 2 - Isolate.run: heartbeat #20, gapMs=110
+[5678] Trường hợp 2 - Isolate.run: heartbeat #21, gapMs=94
+[5787] Trường hợp 2 - Isolate.run: heartbeat #22, gapMs=109
+[5879] Trường hợp 2 - Isolate.run: heartbeat #23, gapMs=92
+[5973] Trường hợp 2 - Isolate.run: heartbeat #24, gapMs=94
+[6083] Trường hợp 2 - Isolate.run: heartbeat #25, gapMs=110
+[6179] Trường hợp 2 - Isolate.run: heartbeat #26, gapMs=96
+[6273] Trường hợp 2 - Isolate.run: heartbeat #27, gapMs=94
+[6381] Trường hợp 2 - Isolate.run: heartbeat #28, gapMs=108
+[6476] Trường hợp 2 - Isolate.run: heartbeat #29, gapMs=95
+[6585] Trường hợp 2 - Isolate.run: heartbeat #30, gapMs=109
+[6677] Trường hợp 2 - Isolate.run: heartbeat #31, gapMs=92
+[6786] Trường hợp 2 - Isolate.run: heartbeat #32, gapMs=109
+[6878] Trường hợp 2 - Isolate.run: heartbeat #33, gapMs=92
+[6987] Trường hợp 2 - Isolate.run: heartbeat #34, gapMs=109
+[7081] Trường hợp 2 - Isolate.run: heartbeat #35, gapMs=94
+[7174] Trường hợp 2 - Isolate.run: heartbeat #36, gapMs=93
+[7283] Trường hợp 2 - Isolate.run: heartbeat #37, gapMs=109
+[7377] Trường hợp 2 - Isolate.run: heartbeat #38, gapMs=94
+[7487] Trường hợp 2 - Isolate.run: heartbeat #39, gapMs=110
+[7582] Trường hợp 2 - Isolate.run: heartbeat #40, gapMs=95
+[7676] Trường hợp 2 - Isolate.run: heartbeat #41, gapMs=94
+[7786] Trường hợp 2 - Isolate.run: heartbeat #42, gapMs=110
+[7879] Trường hợp 2 - Isolate.run: heartbeat #43, gapMs=93
+[7973] Trường hợp 2 - Isolate.run: heartbeat #44, gapMs=94
+[8083] Trường hợp 2 - Isolate.run: heartbeat #45, gapMs=110
+[8176] Trường hợp 2 - Isolate.run: heartbeat #46, gapMs=93
+[8287] Trường hợp 2 - Isolate.run: heartbeat #47, gapMs=111
+[8345] Trường hợp 2 - Isolate.run: hoàn tất; checksum=1197327744, computeMs=4509
+[8381] Trường hợp 2 - Isolate.run: heartbeat #48, gapMs=94
+[8476] Trường hợp 2 - Isolate.run: heartbeat #49, gapMs=95
+[8586] Trường hợp 2 - Isolate.run: heartbeat #50, gapMs=110
+[8602] Trường hợp 2 - Isolate.run: dừng heartbeat; ticks=50, maxGapMs=112
+[8602] Kết thúc Step 4.
+
+Dart SDK version: 3.13.2 (stable), dart run isolate_experiment.dart
+Run date: 2026-09-22 (final verification after formatting)
+
+[0] Bắt đầu Step 4; heavyIterations=1500000000.
+[2] === Trường hợp 1 - main isolate ===
+[2] Trường hợp 1 - main isolate: bật heartbeat mỗi 100 ms.
+[112] Trường hợp 1 - main isolate: heartbeat #1, gapMs=0
+[205] Trường hợp 1 - main isolate: heartbeat #2, gapMs=93
+[270] Trường hợp 1 - main isolate: bắt đầu tính trực tiếp.
+[3342] Trường hợp 1 - main isolate: hoàn tất; checksum=1197327744, computeMs=3071
+[3342] Trường hợp 1 - main isolate: heartbeat #3, gapMs=3137
+[3417] Trường hợp 1 - main isolate: heartbeat #4, gapMs=75
+[3509] Trường hợp 1 - main isolate: heartbeat #5, gapMs=92
+[3603] Trường hợp 1 - main isolate: dừng heartbeat; ticks=5, maxGapMs=3137
+[3605] === Trường hợp 2 - Isolate.run ===
+[3605] Trường hợp 2 - Isolate.run: bật heartbeat mỗi 100 ms.
+[3711] Trường hợp 2 - Isolate.run: heartbeat #1, gapMs=0
+[3819] Trường hợp 2 - Isolate.run: heartbeat #2, gapMs=108
+[3867] Trường hợp 2 - Isolate.run: bắt đầu tính trong isolate phụ.
+[3913] Trường hợp 2 - Isolate.run: heartbeat #3, gapMs=94
+[4007] Trường hợp 2 - Isolate.run: heartbeat #4, gapMs=94
+[4115] Trường hợp 2 - Isolate.run: heartbeat #5, gapMs=108
+[4208] Trường hợp 2 - Isolate.run: heartbeat #6, gapMs=93
+[4317] Trường hợp 2 - Isolate.run: heartbeat #7, gapMs=109
+[4411] Trường hợp 2 - Isolate.run: heartbeat #8, gapMs=94
+[4519] Trường hợp 2 - Isolate.run: heartbeat #9, gapMs=108
+[4614] Trường hợp 2 - Isolate.run: heartbeat #10, gapMs=95
+[4721] Trường hợp 2 - Isolate.run: heartbeat #11, gapMs=107
+[4814] Trường hợp 2 - Isolate.run: heartbeat #12, gapMs=93
+[4909] Trường hợp 2 - Isolate.run: heartbeat #13, gapMs=95
+[5016] Trường hợp 2 - Isolate.run: heartbeat #14, gapMs=107
+[5110] Trường hợp 2 - Isolate.run: heartbeat #15, gapMs=94
+[5219] Trường hợp 2 - Isolate.run: heartbeat #16, gapMs=108
+[5312] Trường hợp 2 - Isolate.run: heartbeat #17, gapMs=94
+[5420] Trường hợp 2 - Isolate.run: heartbeat #18, gapMs=108
+[5514] Trường hợp 2 - Isolate.run: heartbeat #19, gapMs=94
+[5607] Trường hợp 2 - Isolate.run: heartbeat #20, gapMs=93
+[5716] Trường hợp 2 - Isolate.run: heartbeat #21, gapMs=109
+[5810] Trường hợp 2 - Isolate.run: heartbeat #22, gapMs=94
+[5920] Trường hợp 2 - Isolate.run: heartbeat #23, gapMs=110
+[6012] Trường hợp 2 - Isolate.run: heartbeat #24, gapMs=92
+[6120] Trường hợp 2 - Isolate.run: heartbeat #25, gapMs=108
+[6210] Trường hợp 2 - Isolate.run: heartbeat #26, gapMs=90
+[6319] Trường hợp 2 - Isolate.run: heartbeat #27, gapMs=109
+[6412] Trường hợp 2 - Isolate.run: heartbeat #28, gapMs=93
+[6520] Trường hợp 2 - Isolate.run: heartbeat #29, gapMs=108
+[6614] Trường hợp 2 - Isolate.run: heartbeat #30, gapMs=93
+[6707] Trường hợp 2 - Isolate.run: heartbeat #31, gapMs=94
+[6814] Trường hợp 2 - Isolate.run: heartbeat #32, gapMs=107
+[6908] Trường hợp 2 - Isolate.run: heartbeat #33, gapMs=94
+[7015] Trường hợp 2 - Isolate.run: heartbeat #34, gapMs=107
+[7109] Trường hợp 2 - Isolate.run: heartbeat #35, gapMs=94
+[7217] Trường hợp 2 - Isolate.run: heartbeat #36, gapMs=108
+[7310] Trường hợp 2 - Isolate.run: heartbeat #37, gapMs=92
+[7417] Trường hợp 2 - Isolate.run: heartbeat #38, gapMs=108
+[7511] Trường hợp 2 - Isolate.run: heartbeat #39, gapMs=94
+[7619] Trường hợp 2 - Isolate.run: heartbeat #40, gapMs=108
+[7711] Trường hợp 2 - Isolate.run: heartbeat #41, gapMs=92
+[7771] Trường hợp 2 - Isolate.run: hoàn tất; checksum=1197327744, computeMs=3904
+[7819] Trường hợp 2 - Isolate.run: heartbeat #42, gapMs=108
+[7912] Trường hợp 2 - Isolate.run: heartbeat #43, gapMs=93
+[8020] Trường hợp 2 - Isolate.run: heartbeat #44, gapMs=108
+[8035] Trường hợp 2 - Isolate.run: dừng heartbeat; ticks=44, maxGapMs=110
+[8035] Kết thúc Step 4.
