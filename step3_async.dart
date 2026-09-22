@@ -1,5 +1,4 @@
 import 'dart:async';
-import 'dart:io';
 
 const Duration simulatedIoDelay = Duration(seconds: 4);
 final Stopwatch programStopwatch = Stopwatch()..start();
@@ -8,13 +7,13 @@ void logLine(String message) {
   print('[${programStopwatch.elapsedMilliseconds}] $message');
 }
 
-/// Mô phỏng lời gọi đồng bộ chặn main isolate.
-void downloadFileSync({Duration delay = simulatedIoDelay}) {
+/// Mô phỏng I/O-bound: Future.delayed không chiếm CPU trong thời gian chờ.
+Future<void> downloadFileAsync({Duration delay = simulatedIoDelay}) async {
   logLine(
-    'Bắt đầu tác vụ đồng bộ; mô phỏng chờ tệp trong ${delay.inMilliseconds} ms.',
+    'Bắt đầu tác vụ bất đồng bộ; mô phỏng chờ tệp trong ${delay.inMilliseconds} ms.',
   );
-  sleep(delay);
-  logLine('Tác vụ đồng bộ đã hoàn thành.');
+  await Future<void>.delayed(delay);
+  logLine('Tác vụ bất đồng bộ đã hoàn thành.');
 }
 
 class HeartbeatMonitor {
@@ -42,20 +41,23 @@ class HeartbeatMonitor {
 }
 
 Future<void> main() async {
-  logLine('Bắt đầu Step 2 - Synchronous.');
+  logLine('Bắt đầu Step 3 - Asynchronous.');
   final heartbeat = HeartbeatMonitor()..start();
-
-  // Tạo hai tick trước để gap kế tiếp phản ánh rõ thời gian main isolate bị chặn.
-  await Future<void>.delayed(const Duration(milliseconds: 250));
-
   final stopwatch = Stopwatch()..start();
-  downloadFileSync();
+
+  // Không await ngay: main isolate có thể tiếp tục chạy và xử lý heartbeat.
+  final future = downloadFileAsync();
+  logLine(
+    'Lệnh ngay sau downloadFileAsync(); elapsedMs=${stopwatch.elapsedMilliseconds}.',
+  );
+
+  await future;
   stopwatch.stop();
   logLine(
-    'Lệnh ngay sau downloadFileSync(); elapsedMs=${stopwatch.elapsedMilliseconds}.',
+    'Toàn bộ tác vụ bất đồng bộ hoàn tất; elapsedMs=${stopwatch.elapsedMilliseconds}.',
   );
 
   await Future<void>.delayed(const Duration(milliseconds: 250));
   heartbeat.stop();
-  logLine('Kết thúc Step 2.');
+  logLine('Kết thúc Step 3.');
 }

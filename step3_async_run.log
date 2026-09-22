@@ -1,0 +1,51 @@
+Dart SDK 3.13.2, dart run step3_async.dart, 2026-09-22
+[0] Bắt đầu Step 3 - Asynchronous.
+[2] Heartbeat bật, chu kỳ 100 ms.
+[5] Bắt đầu tác vụ bất đồng bộ; mô phỏng chờ tệp trong 4000 ms.
+[8] Lệnh ngay sau downloadFileAsync(); elapsedMs=2.
+[105] Heartbeat #1, gapMs=0
+[211] Heartbeat #2, gapMs=106
+[318] Heartbeat #3, gapMs=107
+[411] Heartbeat #4, gapMs=93
+[504] Heartbeat #5, gapMs=93
+[613] Heartbeat #6, gapMs=109
+[706] Heartbeat #7, gapMs=93
+[816] Heartbeat #8, gapMs=110
+[911] Heartbeat #9, gapMs=95
+[1019] Heartbeat #10, gapMs=108
+[1114] Heartbeat #11, gapMs=95
+[1209] Heartbeat #12, gapMs=95
+[1318] Heartbeat #13, gapMs=109
+[1411] Heartbeat #14, gapMs=93
+[1504] Heartbeat #15, gapMs=93
+[1612] Heartbeat #16, gapMs=108
+[1706] Heartbeat #17, gapMs=94
+[1815] Heartbeat #18, gapMs=109
+[1906] Heartbeat #19, gapMs=91
+[2013] Heartbeat #20, gapMs=107
+[2106] Heartbeat #21, gapMs=93
+[2215] Heartbeat #22, gapMs=109
+[2308] Heartbeat #23, gapMs=93
+[2416] Heartbeat #24, gapMs=108
+[2508] Heartbeat #25, gapMs=92
+[2618] Heartbeat #26, gapMs=110
+[2712] Heartbeat #27, gapMs=94
+[2805] Heartbeat #28, gapMs=93
+[2912] Heartbeat #29, gapMs=107
+[3004] Heartbeat #30, gapMs=92
+[3114] Heartbeat #31, gapMs=110
+[3207] Heartbeat #32, gapMs=93
+[3317] Heartbeat #33, gapMs=110
+[3412] Heartbeat #34, gapMs=95
+[3505] Heartbeat #35, gapMs=93
+[3614] Heartbeat #36, gapMs=109
+[3706] Heartbeat #37, gapMs=92
+[3814] Heartbeat #38, gapMs=108
+[3908] Heartbeat #39, gapMs=94
+[4017] Heartbeat #40, gapMs=109
+[4020] Tác vụ bất đồng bộ đã hoàn thành.
+[4020] Toàn bộ tác vụ bất đồng bộ hoàn tất; elapsedMs=4015.
+[4110] Heartbeat #41, gapMs=93
+[4217] Heartbeat #42, gapMs=107
+[4281] Dừng heartbeat; ticks=42, maxGapMs=110
+[4281] Kết thúc Step 3.
