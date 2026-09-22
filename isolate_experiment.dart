@@ -22,10 +22,14 @@ Future<void> main() async {
   directStopwatch.stop();
   print('Checksum: $directChecksum');
   print('Thoi gian: ${directStopwatch.elapsedMilliseconds} ms');
+  print('Lenh nay chi chay sau khi phep tinh tren main isolate ket thuc.');
 
   print('\n=== CPU-bound bang Isolate.run() ===');
   final isolateStopwatch = Stopwatch()..start();
-  final isolateChecksum = await Isolate.run(heavyComputation);
+  final isolateFuture = Isolate.run(heavyComputation);
+  // Isolate.run() tra ve Future ngay; main isolate van co the chay lenh nay.
+  print('Main isolate van xu ly duoc lenh nay trong khi isolate phu tinh toan.');
+  final isolateChecksum = await isolateFuture;
   isolateStopwatch.stop();
   print('Checksum: $isolateChecksum');
   print('Thoi gian: ${isolateStopwatch.elapsedMilliseconds} ms');

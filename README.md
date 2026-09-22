@@ -20,13 +20,13 @@ Các thời gian dưới đây được đo bằng `Stopwatch` trong một lần
 
 Dart bắt đầu chương trình trong main isolate. Main isolate xử lý các sự kiện của event loop theo thứ tự; trong Flutter, đó có thể là thao tác người dùng và yêu cầu vẽ khung hình. Nếu một lời gọi đồng bộ kéo dài, main isolate không thể xử lý sự kiện tiếp theo cho đến khi lời gọi kết thúc. Đây là nguyên nhân UI blocking. [Concurrency in Dart](https://dart.dev/language/concurrency)
 
-`downloadFileSync()` dùng `sleep` để mô phỏng một tác vụ chặn 4 giây. Trong lần chạy thật, lệnh ngay sau `downloadFileSync()` chỉ xuất hiện sau `4011 ms`. Dù đây không phải thao tác tải tệp thật, nó cho thấy lời gọi đồng bộ chặn mã theo sau và sẽ làm UI không phản hồi nếu chạy trên main isolate.
+`downloadFileSync()` dùng `sleep` để mô phỏng một tác vụ chặn 4 giây. Trong lần chạy thật, lệnh ngay sau `downloadFileSync()` chỉ xuất hiện sau `4005 ms`. Dù đây không phải thao tác tải tệp thật, nó cho thấy lời gọi đồng bộ chặn mã theo sau và sẽ làm UI không phản hồi nếu chạy trên main isolate.
 
 ## The Asynchronous Solution
 
 I/O-bound dành phần lớn thời gian chờ mạng, tệp hoặc cơ sở dữ liệu thay vì tính toán liên tục trên CPU. Future/`async`/`await` cho phép main isolate nhường thời gian chờ cho event loop; khi I/O hoàn tất, Future được hoàn thành và mã sau `await` tiếp tục chạy.
 
-`downloadFileAsync()` dùng `Future.delayed` để mô phỏng một lần chờ I/O 4 giây. Hàm trả về Future ngay nên lệnh ngay sau lời gọi xuất hiện sau `4 ms`; toàn bộ tác vụ kết thúc sau `4014 ms`. `Future.delayed` chỉ mô phỏng thời gian chờ, không phải một yêu cầu mạng thật.
+`downloadFileAsync()` dùng `Future.delayed` để mô phỏng một lần chờ I/O 4 giây. Hàm trả về Future ngay nên lệnh ngay sau lời gọi xuất hiện sau `7 ms`; toàn bộ tác vụ kết thúc sau `4026 ms`. `Future.delayed` chỉ mô phỏng thời gian chờ, không phải một yêu cầu mạng thật.
 
 `async`/`await` không tự chuyển phép tính sang isolate khác. Một vòng lặp CPU nặng vẫn chạy liên tục trên main isolate nếu nó không gặp thao tác bất đồng bộ thực sự, nên vẫn có thể gây UI blocking.
 
@@ -34,7 +34,7 @@ I/O-bound dành phần lớn thời gian chờ mạng, tệp hoặc cơ sở d�
 
 Mỗi isolate có vùng nhớ (heap), event loop và trạng thái riêng. Isolate không chia sẻ trạng thái trực tiếp mà giao tiếp bằng message. Vì vậy, một worker isolate có thể thực hiện CPU-bound mà không chiếm event loop của main isolate. [Concurrency in Dart](https://dart.dev/language/concurrency)
 
-`heavyComputation` là hàm top-level, thực hiện 1.500.000.000 vòng lặp và trả checksum. Chạy trực tiếp trên main isolate mất `2895 ms`. Chạy cùng phép tính bằng `await Isolate.run(heavyComputation)` mất `4031 ms`. Hai cách đều trả checksum `1197327744`, xác nhận chúng thực hiện cùng phép tính.
+`heavyComputation` là hàm top-level, thực hiện 1.500.000.000 vòng lặp và trả checksum. Chạy trực tiếp trên main isolate mất `2790 ms`; dòng mã theo sau chỉ in sau khi phép tính này kết thúc. Khi khởi chạy cùng phép tính bằng `Isolate.run(heavyComputation)`, dòng từ main isolate in ngay trước khi `await` kết quả; toàn bộ tác vụ mất `3828 ms`. Hai cách đều trả checksum `1197327744`, xác nhận chúng thực hiện cùng phép tính.
 
 `Isolate.run()` phù hợp với một công việc nền đơn lẻ có một kết quả. Đổi lại, việc tạo worker isolate, khởi động/JIT và truyền dữ liệu tạo thêm chi phí. Callback và kết quả phải gửi được giữa các isolate. [Isolates](https://dart.dev/language/isolates), [Isolate.run API](https://api.dart.dev/dart-isolate/Isolate/run.html)
 
@@ -43,7 +43,7 @@ Mỗi isolate có vùng nhớ (heap), event loop và trạng thái riêng. Isola
 | Tiêu chí | Synchronous | Asynchronous Future async await | Isolate |
 | --- | --- | --- | --- |
 | Tác vụ minh họa | Lời gọi chặn bằng `sleep` | Mô phỏng chờ I/O bằng `Future.delayed` | CPU-bound với 1.500.000.000 vòng lặp |
-| Program response time | Lệnh sau hàm chạy sau `4011 ms` | Lệnh sau hàm chạy sau `4 ms`; tác vụ hoàn tất sau `4014 ms` | Direct: `2895 ms`; `Isolate.run`: `4031 ms` |
+| Program response time | Lệnh sau hàm chạy sau `4005 ms` | Lệnh sau hàm chạy sau `7 ms`; tác vụ hoàn tất sau `4026 ms` | Direct: `2790 ms`; dòng main chỉ chạy sau khi tính xong. `Isolate.run`: `3828 ms`; dòng main chạy ngay sau khi khởi tạo Future. |
 | Main isolate | Bị chặn cho đến khi hàm kết thúc | Có thể xử lý sự kiện khác trong lúc Future chờ | Không chạy phép tính nặng khi worker isolate xử lý |
 | UI responsiveness | Bị đứng nếu chạy trên UI isolate | Vẫn phản hồi trong thời gian chờ I/O | Vẫn phản hồi khi CPU-bound chạy ở worker isolate |
 | Execution model | Tuần tự trong main isolate | Event loop chờ Future hoàn tất | Isolate phụ có heap và event loop riêng |
