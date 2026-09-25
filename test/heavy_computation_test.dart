@@ -1,4 +1,4 @@
-import '../isolate_experiment.dart';
+import '../step4_isolate.dart';
 
 void main() {
   // Kết quả cố định với input nhỏ, dùng để kiểm tra hàm tính toán thực sự
