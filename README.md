@@ -6,10 +6,10 @@ Bài thực hành minh họa cách lựa chọn giữa thực thi đồng bộ, 
 
 | Mã sinh viên | Họ và tên | Email |
 | --- | --- | --- |
-| DE190747 | Vương Minh Quân | [quanvuong22122005@gmail.com](mailto:quanvuong22122005@gmail.com) |
-| DE190555 | Nguyễn Đình Anh Tuấn | [nguyendinhanhtuan0609@gmail.com](mailto:nguyendinhanhtuan0609@gmail.com) |
-| DE190063 | Phạm Lê Quốc Thông | [thongphamle.22.12@gmail.com](mailto:thongphamle.22.12@gmail.com) |
-| DE190429 | Nguyễn Thân Thành Đạt | [doraemondat0605@gmail.com](mailto:doraemondat0605@gmail.com) |
+| DE190747 | Vương Minh Quân | quanvuong22122005@gmail.com |
+| DE190555 | Nguyễn Đình Anh Tuấn | nguyendinhanhtuan0609@gmail.com |
+| DE190063 | Phạm Lê Quốc Thông | thongphamle.22.12@gmail.com |
+| DE190429 | Nguyễn Thân Thành Đạt | doraemondat0605@gmail.com |
 
 ## Mã nguồn và cách chạy
 
